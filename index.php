@@ -1,16 +1,4 @@
 <?php
-
-// Initialize an empty message string
-$alertMessage = "";
-
-// Check if 'length' parameter exists in the GET request
-if (isset($_GET['length'])) {
-    // Convert the 'length' parameter to an integer
-    $length = intval($_GET['length']);
-
-    // Check if length is greater than 0
-    if ($length > 0) {
-
             function generatePassword($length) {
                 $password = "";
             
@@ -22,6 +10,17 @@ if (isset($_GET['length'])) {
                     // Convert the ASCII code to a character and append it to the password
                     $password .= chr($randomAscii);
                 }
+
+// Initialize an empty message string
+$alertMessage = "";
+
+// Check if 'length' parameter exists in the GET request
+if (isset($_GET['length'])) {
+    // Convert the 'length' parameter to an integer
+    $length = intval($_GET['length']);
+
+    // Check if length is greater than 0
+    if ($length > 0) {
             
                 return $password;
             }
@@ -45,6 +44,7 @@ if (isset($_GET['length'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+    <form>
         <label for="length">Password Length:</label>
         <input type="number" id="length" name="length" min="1" required>
         <input type="submit" value="Generate">
