@@ -1,24 +1,33 @@
 <?php
-    // Initialize an empty message string
-    $alertMessage = "";
 
-    // Check if 'length' parameter exists in the GET reques
-    if (isset($_GET['length'])) {
-        // Convert the 'length' parameter to an integer
-        $length = intval($_GET['length']);
+// Initialize an empty message string
+$alertMessage = "";
 
-        // Check if length is greater than 0
-        if ($length > 0) {
-            // Initialize an empty password string
-            $password = "";
+// Check if 'length' parameter exists in the GET request
+if (isset($_GET['length'])) {
+    // Convert the 'length' parameter to an integer
+    $length = intval($_GET['length']);
 
-            // Generate a password of the requested length
-            for ($i = 0; $i < $length; $i++) {
-                // Generate a random ASCII code between 33 and 126
-                $randomAscii = mt_rand(33, 126);
-                 // Convert the ASCII code to a character and append it to the password
-                $password .= chr($randomAscii);
+    // Check if length is greater than 0
+    if ($length > 0) {
+
+            function generatePassword($length) {
+                $password = "";
+            
+                // Generate a password of the requested length
+                for ($i = 0; $i < $length; $i++) {
+                    // Generate a random ASCII code between 33 and 126
+                    $randomAscii = mt_rand(33, 126);
+            
+                    // Convert the ASCII code to a character and append it to the password
+                    $password .= chr($randomAscii);
+                }
+            
+                return $password;
             }
+            // Call the function to generate the password
+            $password = generatePassword($length);
+
             // Store a success message in the alertMessage variable
             $alertMessage = "<div class='alert alert-success'>Generated Password: {$password}</div>";
         } else {
@@ -36,7 +45,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <form method="GET">
         <label for="length">Password Length:</label>
         <input type="number" id="length" name="length" min="1" required>
         <input type="submit" value="Generate">
