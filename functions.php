@@ -1,4 +1,7 @@
 <?php
+// Start the session
+session_start();
+
 function generatePassword($length) {
     $password = "";
 
@@ -14,9 +17,6 @@ function generatePassword($length) {
     return $password;
 }
 
-// Initialize an empty message string
-$alertMessage = "";
-
 // Check if 'length' parameter exists in the GET request
 if (isset($_GET['length'])) {
     // Convert the 'length' parameter to an integer
@@ -24,14 +24,15 @@ if (isset($_GET['length'])) {
 
     // Check if length is greater than 0
     if ($length > 0) {
-            // Call the function to generate the password
-            $password = generatePassword($length);
+        // Call the function to generate the password
+        $password = generatePassword($length);
 
-            // Store a success message in the alertMessage variable
-            $alertMessage = "<div class='alert alert-success'>Generated Password: {$password}</div>";
-        } else {
-            // Store an error message in the alertMessage variable if length is not greater than 0
-            $alertMessage = "<div class='alert alert-danger'>Password length should be greater than 0!</div>";
-        }
+        // Store the password in a session variable
+        $_SESSION['password'] = $password;
+
+        // Redirect to the password display page
+        header("Location: display_password.php");
+        exit;
     }
+}
 ?>
