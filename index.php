@@ -9,6 +9,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form method="GET">
+        <label for="length">Password Length:</label>
+        <input type="number" id="length" name="length" min="1" required>
+        <input type="submit" value="Generate">
+    </form>
 </body>
 </html>
