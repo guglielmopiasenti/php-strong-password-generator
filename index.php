@@ -9,7 +9,30 @@ include 'functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            width: 60%;
+            min-width: 500px;
+        }
+        .form-control {
+            width: 80px;
+        }
+        h1, h2 {
+            color: #007bff;
+        }
+        label {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body class="bg-dark">
     <div class="container card d-flex flex-column align-items-center justify-content-between my-5 py-5 shadow-lg">
         <h1 class="py-1">Strong Password Generator</h1>

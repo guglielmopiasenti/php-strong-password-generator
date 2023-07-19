@@ -17,13 +17,28 @@ if (isset($_SESSION['password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Display</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
-    <?php
-        if (!empty($alertMessage)) {
-            echo $alertMessage;
+    <style>
+        body {
+            font-family: Arial, sans-serif;
         }
-    ?>
-    <a href="index.php" class="btn btn-primary">Go Back</a>
+        .card {
+            width: 40%;
+            min-width: 300px;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="bg-dark d-flex justify-content-center">
+    <div class="container card d-flex flex-column align-items-center justify-content-between my-5 py-5 shadow-lg">
+        <h1>Your new password is ready!</h1>
+        <?php
+            if (!empty($alertMessage)) {
+                echo $alertMessage;
+            }
+        ?>
+        <a href="index.php" class="btn btn-primary">Go Back</a>
+    </div>
 </body>
 </html>
